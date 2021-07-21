@@ -4,10 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 )
-
-
-
-type Matrix struct{
+	type Matrix struct{
 	rows int
 	columns int
 	twoDM [][]int
@@ -34,13 +31,7 @@ func (d Matrix) addMatrices(newM [][]int)[][]int{
 	return d.twoDM
 
 }
-func (d *Matrix) printMatrix(){
-	matrix,err:= json.MarshalIndent(d,"","")
-	if err!=nil{
-		fmt.Println(err)
-	}
-	fmt.Println(string(matrix))
-}
+
 
 
 
@@ -54,7 +45,18 @@ func main() {
         s.setElement(1,1,6)
         newM := [][]int{{5,6}, {7,8}}
         fmt.Println(s.addMatrices(newM))
-        s.printMatrix()
+
+	    matrix, err := json.Marshal(s.twoDM)
+
+	    if err != nil {
+
+		fmt.Println(err)
+	    }
+
+
+	    fmt.Println()
+	    fmt.Println(string(matrix))
+
 
 
 
