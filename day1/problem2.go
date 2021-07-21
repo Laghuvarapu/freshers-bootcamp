@@ -1,52 +1,60 @@
 package main
-
-import "fmt"
-
-type pay interface{
-	salaryperMonth() int
+import (
+	"fmt"
+	"strings"
+)
+type Node struct {
+	data string
+	left *Node
+	right *Node
 }
-
-
-type fulltimeEmp struct{
-	basic int
-	days int
-
+func createTree(sli []string) *Node {
+	if len(sli)==0 {
+		return nil
+	}
+	if !check(sli[0]) {
+		node := Node{sli[0], nil, nil}
+		head := createTree(sli[1:])
+		if head == nil {
+			return &node
+		}
+		head.left = &node
+		return head
+	} else {
+		node := Node{sli[0], nil, nil}
+		right := createTree(sli[1:])
+		node.right = right
+		return &node
+	}
 }
-
-type contractor struct{
-	basic int
-	days int
+func check(s string) bool {
+	if s=="+" || s=="-" {
+		return true
+	}
+	return false
 }
-
-type freeLancer struct{
-	basic int
-	hours int
-
+func preOrder(node *Node) {
+	if node == nil {
+		return
+	}
+	fmt.Print(node.data+ " ")
+	preOrder(node.left)
+	preOrder(node.right)
 }
-func (f fulltimeEmp) salaryperMonth() int {
-	fmt.Println("Full-Time employee salary: " ,f.basic * f.days)
-	return 1
+func postOrder(node *Node) {
+	if node == nil {
+		return
+	}
+	postOrder(node.left)
+	postOrder(node.right)
+	fmt.Print(node.data+ " ")
 }
-func (f contractor) salaryperMonth() int {
-	fmt.Println("Contractor salry:", f.basic* f.days)
-	return 1
-}
-func (f freeLancer) salaryperMonth() int{
-	fmt.Println("Free Lnacer Salary:", f.basic* f.hours)
-	return 1
-}
-
 func main() {
-	var p pay
-	p= fulltimeEmp{500,28}
-	p.salaryperMonth()
-	p = contractor{100,28}
-	p.salaryperMonth()
-	p = freeLancer{10,15}
-	p.salaryperMonth()
-
-
-
-
-
+	s := "a - b + c"
+	sli :=  strings.Split(s, " ")
+	root := createTree(sli)
+	preOrder(root)
+	fmt.Println()
+	postOrder(root)
+	fmt.Println()
 }

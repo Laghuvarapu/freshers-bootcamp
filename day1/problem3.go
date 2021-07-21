@@ -24,26 +24,29 @@ type freeLancer struct{
 
 }
 func (f fulltimeEmp) salaryperMonth() int {
-	fmt.Println("Full-Time employee salary: " ,f.basic * f.days)
-	return 1
+	fmt.Println("Full-Time employee salary: " )
+	return f.basic* f.days
 }
 func (f contractor) salaryperMonth() int {
-	fmt.Println("Contractor salry:", f.basic* f.days)
-	return 1
+	fmt.Println("Contractor salry:")
+	return f.basic* f.days
 }
-func (f freeLancer) salaryperMonth() int{
-	fmt.Println("Free Lnacer Salary:", f.basic* f.hours)
-	return 1
+func (f freeLancer) salaryperMonth() int {
+	fmt.Println("Free Lnacer Salary:")
+	return f.basic* f.hours
+
 }
 
 func main() {
 	var p pay
 	p= fulltimeEmp{500,28}
-	p.salaryperMonth()
+	fmt.Println(p.salaryperMonth())
 	p = contractor{100,28}
-	p.salaryperMonth()
+	fmt.Println(p.salaryperMonth())
+
 	p = freeLancer{10,15}
-	p.salaryperMonth()
+	fmt.Println(p.salaryperMonth())
+
 
 
 
