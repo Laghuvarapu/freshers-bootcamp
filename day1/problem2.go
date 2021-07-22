@@ -1,15 +1,18 @@
 package main
+
 import (
 	"fmt"
 	"strings"
 )
+
 type Node struct {
-	data string
-	left *Node
+	data  string
+	left  *Node
 	right *Node
 }
+
 func createTree(sli []string) *Node {
-	if len(sli)==0 {
+	if len(sli) == 0 {
 		return nil
 	}
 	if !check(sli[0]) {
@@ -28,7 +31,7 @@ func createTree(sli []string) *Node {
 	}
 }
 func check(s string) bool {
-	if s=="+" || s=="-" {
+	if s == "+" || s == "-" {
 		return true
 	}
 	return false
@@ -37,7 +40,7 @@ func preOrder(node *Node) {
 	if node == nil {
 		return
 	}
-	fmt.Print(node.data+ " ")
+	fmt.Print(node.data + " ")
 	preOrder(node.left)
 	preOrder(node.right)
 }
@@ -47,11 +50,11 @@ func postOrder(node *Node) {
 	}
 	postOrder(node.left)
 	postOrder(node.right)
-	fmt.Print(node.data+ " ")
+	fmt.Print(node.data + " ")
 }
 func main() {
 	s := "a - b + c"
-	sli :=  strings.Split(s, " ")
+	sli := strings.Split(s, " ")
 	root := createTree(sli)
 	preOrder(root)
 	fmt.Println()
