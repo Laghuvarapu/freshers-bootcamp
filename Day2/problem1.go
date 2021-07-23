@@ -7,8 +7,6 @@ import (
 	"sync"
 )
 
-
-
 func freqofLetters(s string, m map[string]int,  wg *sync.WaitGroup) {
 
 	sli := strings.Split(s, "")
@@ -16,7 +14,6 @@ func freqofLetters(s string, m map[string]int,  wg *sync.WaitGroup) {
 		m[sli[ch]]++
 	}
 	wg.Done()
-
 
 }
 
@@ -34,20 +31,11 @@ func printCharacters(m map[string]int){
     fmt.Println("}")
 }
 
- /*func f(m map[string]int,setofNames string,wg *sync.WaitGroup){
-	for _,ch:= range setofNames{
-		m[string(ch)]++
-	}
-	wg.Done()
-}*/
-
 func main() {
 	var wg sync.WaitGroup
 	m := make(map[string]int)
 
 	setofNames := []string{"balu", "tarun"}
-
-
 
 	for i := 0; i < len(setofNames); i++ {
 		wg.Add(1)
@@ -58,6 +46,5 @@ func main() {
 	wg.Wait()
 
 	printCharacters(m)
-
 
 }

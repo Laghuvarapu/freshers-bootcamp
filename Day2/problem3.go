@@ -14,6 +14,7 @@ func deposit(amountDepositing int, wg *sync.WaitGroup) {
 	mutex.Lock()
 	balance += amountDepositing
 	fmt.Printf("Deposited %d amount and new current balance %d\n", amountDepositing, balance)
+
 	mutex.Unlock()
 	wg.Done()
 }
@@ -26,6 +27,7 @@ func withdrawl(amountWithdrawing int, wg *sync.WaitGroup) {
 		balance -= amountWithdrawing
 		fmt.Printf("Withdrawing %d amount and new current balance %d\n", amountWithdrawing, balance)
 	}
+
 	mutex.Unlock()
 
 	wg.Done()
