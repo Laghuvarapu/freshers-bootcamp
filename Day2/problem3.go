@@ -5,8 +5,10 @@ import (
 	"sync"
 )
 
-var balance int = 500
-var mutex = &sync.Mutex{}
+var (
+	balance = 500
+	mutex   = &sync.Mutex{}
+)
 
 func deposit(amountDepositing int, wg *sync.WaitGroup) {
 	mutex.Lock()
