@@ -3,6 +3,7 @@ import (
 	"freshers-bootcamp/day3/problem2/Controllers"
 	"github.com/gin-gonic/gin"
 )
+
 //SetupRouter ... Configure routes
 func SetupRouter() *gin.Engine {
 	r := gin.Default()

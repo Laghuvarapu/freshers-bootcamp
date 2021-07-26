@@ -1,9 +1,11 @@
 package Models
 import (
-	"freshers-bootcamp/day3/problem2/Config"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
+
+	"freshers-bootcamp/day3/problem2/Config"
+	"github.com/go-sql-driver/mysql"
 )
+
 //GetAllUsers Fetch all user data
 func GetAllUsers(user *[]Student) (err error) {
 	if err = Config.DB.Find(user).Error; err != nil {
@@ -11,6 +13,7 @@ func GetAllUsers(user *[]Student) (err error) {
 	}
 	return nil
 }
+
 //CreateUser ... Insert New data
 func CreateUser(user *Student) (err error) {
 	if err = Config.DB.Create(user).Error; err != nil {
@@ -18,6 +21,7 @@ func CreateUser(user *Student) (err error) {
 	}
 	return nil
 }
+
 //GetUserByID ... Fetch only one user by Id
 func GetUserByID(user *Student, id string) (err error) {
 	if err = Config.DB.Where("id = ?", id).First(user).Error; err != nil {
@@ -25,6 +29,7 @@ func GetUserByID(user *Student, id string) (err error) {
 	}
 	return nil
 }
+
 //UpdateUser ... Update user
 func UpdateUser(user *Student, id string) (err error) {
 	fmt.Println(user)

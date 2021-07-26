@@ -1,6 +1,6 @@
 package Models
-type Student struct {
 
+type Student struct {
 	ID        uint   `json:"id"`
 	Stu_id    uint   `json:"stu_id" `
 	FirstName string `json:"name" `
@@ -10,6 +10,7 @@ type Student struct {
 	Subject   string `json:"subject" `
 	Marks     uint   `json:"marks" `
 }
+
 func (b *Student) TableName() string {
 	return "user"
 }

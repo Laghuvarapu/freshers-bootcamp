@@ -1,12 +1,15 @@
 package main
 import (
+	"fmt"
+
 	"freshers-bootcamp/day3/problem2/Config"
 	"freshers-bootcamp/day3/problem2/Models"
 	"freshers-bootcamp/day3/problem2/Routes"
-	"fmt"
 	"github.com/jinzhu/gorm"
 )
+
 var err error
+
 func main() {
 	Config.DB, err = gorm.Open("mysql", Config.DbURL(Config.BuildDBConfig()))
 	if err != nil {
