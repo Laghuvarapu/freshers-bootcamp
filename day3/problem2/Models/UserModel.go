@@ -1,5 +1,5 @@
 package Models
-type User struct {
+type Student struct {
 
 	ID        uint   `json:"id"`
 	Stu_id    uint   `json:"stu_id" `
@@ -10,6 +10,6 @@ type User struct {
 	Subject   string `json:"subject" `
 	Marks     uint   `json:"marks" `
 }
-func (b *User) TableName() string {
+func (b *Student) TableName() string {
 	return "user"
 }
