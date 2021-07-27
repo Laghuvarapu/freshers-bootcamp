@@ -1,16 +1,18 @@
 package Models
 
 type Order struct {
-	ID        string   `json:"id"`
-	CustomerId   string   `json:"customer_id" `
-	Customer Customer `gorm:"foreignKey:CustomerId:"`
-	ProductId  string   `json:"product_id" `
-	Product Product `gorm:"foreignKey:ProductId:"`
-	Quantity  uint      `json:"quantity" `
-	Status    string    `json:"status"`
+	ID         uint     `json:"id"`
+	CustomerId uint     `json:"customer_id" `
+	Customer   Customer `gorm:"foreignKey:CustomerId:"`
+	ProductId  uint     `json:"product_id" `
+	Product    Product  `gorm:"foreignKey:ProductId:"`
+	Quantity   uint     `json:"quantity" `
+	Status     string   `json:"status"`
 }
-
 
 func (b *Order) TableName() string {
-    return "orders"
+	return "orders"
 }
+
+//Add comments everywhere
+//run go fmt

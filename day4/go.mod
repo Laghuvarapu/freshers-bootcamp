@@ -1,4 +1,4 @@
-module freshers-bootcamp
+module freshers-bootcamp/day4
 
 go 1.17
 

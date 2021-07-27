@@ -1,9 +1,10 @@
 package main
+
 import (
 	"fmt"
-	"freshers-bootcamp/Config"
-	"freshers-bootcamp/Models"
-	"freshers-bootcamp/Routes"
+	"freshers-bootcamp/day4/Config"
+	"freshers-bootcamp/day4/Models"
+	"freshers-bootcamp/day4/Routes"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 )
@@ -16,7 +17,7 @@ func main() {
 		fmt.Println("Status:", err)
 	}
 	defer Config.DB.Close()
-	Config.DB.AutoMigrate(&Models.Product{},&Models.Customer{},&Models.Order{})
+	Config.DB.AutoMigrate(&Models.Product{}, &Models.Customer{}, &Models.Order{})
 	r := Routes.SetupRouter()
 	//running
 	r.Run()

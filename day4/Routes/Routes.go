@@ -1,4 +1,5 @@
 package Routes
+
 import (
 	"freshers-bootcamp/day4/Controllers"
 	"github.com/gin-gonic/gin"
@@ -7,15 +8,34 @@ import (
 //SetupRouter ... Configure routes
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
-	grp1 := r.Group("/user-api")
+
+	cust := r.Group("/ecommerce")
 	{
-		grp1.GET("user", Controllers.GetProducts)
 
-		grp1.POST("products", Controllers.CreateProduct)
-		grp1.POST("orders", Controllers.CreateOrder)
-		grp1.GET("products/:id", Controllers.GetProductByID)
-		grp1.GET("orders/:id", Controllers.GetOrderByID)
-
+		cust.POST("createcustomers", Controllers.CreateCustomer)
+		cust.DELETE("deletecustomer/:id", Controllers.DeleteCustomer)
+		cust.GET("customerssbyid/:id", Controllers.GetCustomerByID)
 	}
 	return r
+
+
+
+    prod := r.Group("/ecommerce")
+  {
+	   prod.GET("allproducts", Controllers.GetProducts)
+	   prod.POST("createproducts", Controllers.CreateProduct)
+	   prod.DELETE("deleteproduct/:id", Controllers.DeleteProduct)
+	   prod.GET("productsbyid/:id", Controllers.GetProductByID)
+	   prod.PATCH("updateproduct/:id", Controllers.UpdateProduct)
+  }
+  return r
+
+
+  ord := r.Group("/ecommerce")
+  {
+	   ord.POST("createorders", Controllers.CreateOrder)
+       ord.GET("ordersbyid/:id", Controllers.GetOrderByID)
+       ord.GET("allorders", Controllers.GetOrders)
+  }
+   return r
 }
