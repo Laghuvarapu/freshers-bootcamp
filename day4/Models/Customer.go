@@ -3,7 +3,11 @@ package Models
 import (
 	"freshers-bootcamp/day4/Config"
 	_ "github.com/go-sql-driver/mysql"
+	  "sync"
+
+
 )
+var Mutex sync.Mutex
 
 //CreateCustpmer...Insert New data
 func CreateCustomer(customer *Customer) (err error) {
